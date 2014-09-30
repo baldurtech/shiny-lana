@@ -21,5 +21,4 @@ class ApplicationConfig {
 		ppc.setLocation(new ClassPathResource("/persistence.properties"));
 		return ppc;
 	}
-	
 }
