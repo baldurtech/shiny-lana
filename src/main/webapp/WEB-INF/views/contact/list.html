@@ -16,11 +16,30 @@
         <!-- /* The message code is returned from the @Controller */ -->
         <div th:replace="fragments/alert :: alert (type=${#strings.toLowerCase(message.type)}, message=#{${message.message}(${#authentication.name})})">&nbsp;</div>
     </th:block>
-    <h2 th:text="${contactList}">name</h2>
-    
-    <p>
-        Welcome to the contact addressbook aplication!
-    </p>
+    <center><h2 th:text="${contactList}">name</h2></center>
+    <table border="1" align="center">
+      <tr>
+        <td>Name</td>
+        <td>Mobile</td>
+        <td>Vpmn</td>
+        <td>Email</td>
+        <td>Address</td>
+      </tr>
+       <tr>
+        <td>Shi Hang</td>
+        <td>15222222222</td>
+        <td>62222</td>
+        <td>hanghang@gmail.com</td>
+        <td>TaiYuan</td>
+      </tr>
+       <tr>
+        <td>Xiao Bai</td>
+        <td>18222222222</td>
+        <td>63333</td>
+        <td>xiaobai@gmail.com</td>
+        <td>TaiYuan</td>
+      </tr>
+    </table>
 </div>
 </body>
 </html>
