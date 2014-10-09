@@ -5,11 +5,7 @@ import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
 
 import org.junit.Before;
@@ -27,6 +23,9 @@ public class ContactControllerTest {
     
     @InjectMocks
     ContactController controller;
+    
+    @Mock 
+    ContactService contactService;
     
     @Before
     public void setup() {
@@ -48,6 +47,9 @@ public class ContactControllerTest {
          mockMvc.perform(get("/contact/list"))
             .andDo(print())
             .andExpect(status().isOk())
+            .andExpect(model().attributeExists("contactList"))
             .andExpect(view().name(is("contact/list")));
+            
+         verify(contactService).getContactList();
     }
 }
